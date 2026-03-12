@@ -5,6 +5,7 @@ import os
 def load_and_clean_data(file_path):
     # Load with specific encoding due to special characters in city names
     df = pd.read_csv(file_path, encoding='ISO-8859-1')
+    df.columns = df.columns.str.strip()
     
     # Drop columns that are useless for ML (like URLs and Passwords)
     cols_to_drop = ['Customer_Email', 'Customer_Password', 'Product_Image', 'Customer_Fname', 'Customer_Lname']
@@ -18,6 +19,7 @@ def load_and_clean_data(file_path):
     df['Order_Zipcode'] = df['Order_Zipcode'].fillna(0)
     
     print(f"Data Ingested: {df.shape[0]} rows, {df.shape[1]} columns")
+    print(df.columns.tolist())
     return df
 
 if __name__ == "__main__":
