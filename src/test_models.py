@@ -20,7 +20,7 @@ def test_ml_risk_model():
     
     # 2. Recreate the EXACT same test split used in Phase 2
     X = df
-    y = df['late_delivery_risk']
+    y = df['Late_delivery_risk']
     _, X_test, _, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
     
     # 3. Predict and Evaluate
@@ -42,7 +42,7 @@ def test_dl_demand_model():
     # 2. Prepare a "Real-World" sequence (the last 7 days of sales)
     df = load_and_clean_data('C:\\Users\\semwa\\OneDrive\\Desktop\\Supply-Chain-Risk-Engine\\data\\DataCoSupplyChainDataset.csv')
     df['order_date'] = pd.to_datetime(df['order_date'])
-    daily_sales = df.groupby('order_date')['sales'].sum().resample('D').sum().fillna(0)
+    daily_sales = df.groupby('order_date')['Sales'].sum().resample('D').sum().fillna(0)
     
     # Take the last 7 days from the dataset to predict the 8th day
     last_7_days = daily_sales.values[-7:].reshape(-1, 1)

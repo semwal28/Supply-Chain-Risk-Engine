@@ -24,11 +24,11 @@ def run_stress_test():
         'Order_Region': 'Southeast Asia',
         'Shipping_Mode': 'Same Day',      # <--- Change this to 'Same Day'
         'Customer_Segment': 'Consumer',
-        'Sales': 314.64,
+        'Sales': 114.64,
         'Order_Item_Quantity': 1
       }
 
-    for mode in ['Standard_Class', 'Second_Class', 'First_Class', 'Same_Day']:
+    for mode in ['Standard Class', 'Second Class', 'First Class', 'Same Day']:
         test_order = test_order_fast.copy()
         test_order['Shipping_Mode'] = mode
         prob = risk_model.predict_proba(pd.DataFrame([test_order]))[0][1]
